@@ -2,6 +2,7 @@
 
 #include "OpenDriveMap.h"
 #include "LaneSection.h"
+#include "Lane.h"
 #include "Mesh.h"
 #include "Road.h"
 
@@ -17,8 +18,8 @@ PYBIND11_MODULE(pyopendrive, m) {
         .def_readwrite("proj4", &odr::OpenDriveMap::proj4)
         .def_readwrite("x_offs", &odr::OpenDriveMap::x_offs)
         .def_readwrite("y_offs", &odr::OpenDriveMap::y_offs)
-        .def_readwrite("xodr_file", &odr::OpenDriveMap::xodr_file)
-        .def_readwrite("xml_doc", &odr::OpenDriveMap::xml_doc)
+        // .def_readwrite("xodr_file", &odr::OpenDriveMap::xodr_file)
+        // .def_readwrite("xml_doc", &odr::OpenDriveMap::xml_doc)
         .def_readwrite("id_to_road", &odr::OpenDriveMap::id_to_road)
         .def_readwrite("id_to_junction", &odr::OpenDriveMap::id_to_junction)
         ;
@@ -45,7 +46,7 @@ PYBIND11_MODULE(pyopendrive, m) {
         .def_readwrite("lane_width", &odr::Lane::lane_width)
         .def_readwrite("outer_border", &odr::Lane::outer_border)
         .def_readwrite("inner_border", &odr::Lane::inner_border)
-        .def_readwrite("s_to_hight_offset", &odr::Lane::s_to_hight_offset)
+        .def_readwrite("s_to_hight_offset", &odr::Lane::s_to_height_offset)
         .def_readwrite("roadmark_groups", &odr::Lane::roadmark_groups)
         ;
 
@@ -65,13 +66,13 @@ PYBIND11_MODULE(pyopendrive, m) {
         .def("get_road_objects", &odr::Road::get_road_objects)
         .def("get_lanesection_s0", &odr::Road::get_lanesection_s0)
         .def("get_lanesection", &odr::Road::get_lanesection)
-        .def("get_lanesection_end", (double (*)(LaneSection)) &odr::Road::get_lanesection_end)
-        .def("get_lanesection_end", (double (*)(double)) &odr::Road::get_lanesection_end)
-        .def("get_lanesection_length", (double (*)(LaneSection)) &odr::Road::get_lanesection_length)
-        .def("get_lanesection_length", (double (*)(double)) &odr::Road::get_lanesection_length)
+        // .def("get_lanesection_end", (double (*)(LaneSection)) &odr::Road::get_lanesection_end)
+        // .def("get_lanesection_end", (double (*)(double)) &odr::Road::get_lanesection_end)
+        // .def("get_lanesection_length", (double (*)(LaneSection)) &odr::Road::get_lanesection_length)
+        // .def("get_lanesection_length", (double (*)(double)) &odr::Road::get_lanesection_length)
         .def("get_xyz", &odr::Road::get_xyz)
         .def("get_surface_pt", &odr::Road::get_surface_pt)
-        .def("get_lane_mesh", &odr::Road::get_lane_mesh)
+        // .def("get_lane_mesh", &odr::Road::get_lane_mesh)
         .def("get_roadmark_mesh", &odr::Road::get_roadmark_mesh)
         .def("get_road_object_mesh", &odr::Road::get_road_object_mesh)
         .def_readwrite("length", &odr::Road::length)
@@ -81,7 +82,7 @@ PYBIND11_MODULE(pyopendrive, m) {
         .def_readwrite("predecessor", &odr::Road::predecessor)
         .def_readwrite("successor", &odr::Road::successor)
         .def_readwrite("crossfall", &odr::Road::crossfall)
-        .def_readwrite("ref_line", &odr::Road::ref_line)
+        // .def_readwrite("ref_line", &odr::Road::ref_line)
         .def_readwrite("s_to_lanesection", &odr::Road::s_to_lanesection)
         .def_readwrite("s_to_type", &odr::Road::s_to_type)
         .def_readwrite("s_to_speed", &odr::Road::s_to_speed)

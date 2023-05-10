@@ -21,6 +21,7 @@ endif()
 include_directories(include)
 include_directories(thirdparty)
 
+
 add_library(OpenDrive SHARED
     src/Geometries/Arc.cpp
     src/Geometries/CubicSpline.cpp
@@ -45,3 +46,9 @@ add_library(OpenDrive SHARED
 
 add_executable(test-xodr test.cpp)
 target_link_libraries(test-xodr OpenDrive)
+
+add_subdirectory(thirdparty/pybind11)
+pybind11_add_module(pyopendrive SHARED 
+    src/pyopendrive.cpp
+)
+target_link_libraries(pyopendrive PRIVATE OpenDrive)
